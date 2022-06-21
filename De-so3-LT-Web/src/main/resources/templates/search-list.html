@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<table border="1">
+
+		<thead>
+			<tr>
+				<th>Book code</th>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Category</th>
+				<th>Booked</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="book : ${listSearch}">
+				<td th:text="${book.bookCode}"></td>
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.category}"></td>
+				<td th:if="${book.booked == 1}" th:text="Booked"></td>
+				<td th:if="${book.booked == 0}"><a
+					th:href="@{/booked/{id}(id=${book.id})}">Book</a></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+</body>
+</html>
